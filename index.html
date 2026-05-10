@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中間考査 語句暗記</title>
+<title>江戸〜幕末 語句暗記</title>
 <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
 <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -291,9 +291,9 @@ function AnkiApp() {
     timerRef.current = setTimeout(() => setParticles([]), 1100);
   };
 
-  const buildChoices = (cards, currentIdx) => {
+  const buildChoices = (cards, currentIdx, subj) => {
     const correct = cards[currentIdx];
-    const allCards = (subject === 'science' ? SCIENCE_UNITS : UNITS).flatMap(u => u.cards);
+    const allCards = (subj === 'science' ? SCIENCE_UNITS : UNITS).flatMap(u => u.cards);
     // 同じtypeから候補を選ぶ、足りなければ全体から補充
     const sameType = allCards.filter(c => c.word !== correct.word && c.type === correct.type);
     const otherType = allCards.filter(c => c.word !== correct.word && c.type !== correct.type);
@@ -308,7 +308,7 @@ function AnkiApp() {
     const shuffled = shuffle(u.cards);
     setUnit(u); setMode(m); setDeck(shuffled); setIdx(0);
     setFlipped(false); setSelected(null); setScore({ ok: 0, ng: 0 }); setFinished(false);
-    if (m === "quiz") setQuizChoices(buildChoices(shuffled, 0));
+    if (m === "quiz") setQuizChoices(buildChoices(shuffled, 0, subject));
     setScreen("study");
   };
 
@@ -316,7 +316,7 @@ function AnkiApp() {
     const nextIdx = idx + 1;
     if (nextIdx >= deck.length) { setFinished(true); return; }
     setIdx(nextIdx); setFlipped(false); setSelected(null);
-    if (mode === "quiz") setQuizChoices(buildChoices(deck, nextIdx));
+    if (mode === "quiz") setQuizChoices(buildChoices(deck, nextIdx, subject));
   };
 
   const handleKnew = () => { setScore(s => ({ ...s, ok: s.ok + 1 })); spawnParticles(true); goNext(); };
