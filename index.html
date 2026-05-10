@@ -260,6 +260,61 @@ const ENGLISH_UNITS = [
   ]},
 ];
 
+
+// ── 国語（漢字）データ ─────────────────────────────
+const JAPANESE_UNITS = [
+  { id:"kanji1", label:"漢字①（P16〜P25）", icon:"📖", color:"#c0392b", cards:[
+    { kanji:"郊", read:"こう", meaning:"郊外", ex:"都市の（　）外に住む。", choices:["郊","效","交","校"] },
+    { kanji:"畳", read:"たたみ・ジョウ", meaning:"畳む・畳表", ex:"布団を（　）んでしまう。", choices:["畳","畠","番","重"] },
+    { kanji:"赴", read:"おもむく", meaning:"赴任", ex:"新しい学校に（　）く。", choices:["赴","走","趣","赴"] },
+    { kanji:"歓", read:"カン", meaning:"歓声・歓迎", ex:"ゴールに（　）声があがった。", choices:["歓","款","観","感"] },
+    { kanji:"唯", read:"ゆい・ただ", meaning:"唯一", ex:"彼が（　）一の目撃者だ。", choices:["唯","惟","維","雄"] },
+    { kanji:"怪", read:"あやしい・カイ", meaning:"怪しい・怪獣", ex:"（　）しい人影を見た。", choices:["怪","快","塊","械"] },
+    { kanji:"脚", read:"キャク・あし", meaning:"脚本・脚力", ex:"（　）本を書いて映画を作る。", choices:["脚","脚","却","客"] },
+    { kanji:"勘", read:"カン", meaning:"勘案・勘定", ex:"（　）定をすませて店を出た。", choices:["勘","感","堪","甘"] },
+    { kanji:"逃", read:"トウ・にげる", meaning:"逃走・逃げる", ex:"犯人が（　）走した。", choices:["逃","桃","挑","兆"] },
+    { kanji:"撮", read:"サツ・とる", meaning:"撮影", ex:"記念写真を（　）影した。", choices:["撮","摂","接","採"] },
+    { kanji:"羨", read:"うらやむ", meaning:"羨ましい", ex:"友達の才能が（　）ましい。", choices:["羨","洗","扇","鮮"] },
+    { kanji:"雄", read:"ゆう・お", meaning:"雄大・雄", ex:"（　）大な山の景色に感動した。", choices:["雄","雌","維","唯"] },
+    { kanji:"寂", read:"さびしい・ジャク", meaning:"寂しい・静寂", ex:"一人でいると（　）しい。", choices:["寂","察","寒","静"] },
+    { kanji:"突", read:"とつ・つく", meaning:"突然・突く", ex:"（　）然、大きな音がした。", choices:["突","空","宍","究"] },
+    { kanji:"慌", read:"あわてる・コウ", meaning:"慌てる・慌ただしい", ex:"遅刻しそうで（　）てた。", choices:["慌","荒","恒","惶"] },
+    { kanji:"握", read:"アク・にぎる", meaning:"握手・握る", ex:"相手の手を強く（　）った。", choices:["握","屋","渥","幄"] },
+    { kanji:"股", read:"また・コ", meaning:"股関節・大股", ex:"（　）関節を痛めた。", choices:["股","設","没","殻"] },
+    { kanji:"封", read:"ふう・フウ", meaning:"封筒・封印", ex:"手紙を（　）筒に入れた。", choices:["封","討","射","叫"] },
+    { kanji:"貼", read:"はる・チョウ", meaning:"貼る・貼付", ex:"壁にポスターを（　）る。", choices:["貼","張","帳","長"] },
+    { kanji:"詰", read:"つめる・キツ", meaning:"詰める・詰問", ex:"箱に荷物を（　）めた。", choices:["詰","話","語","誌"] },
+  ]},
+  { id:"kanji2", label:"漢字②（漢字に親しもう）", icon:"✍️", color:"#8e44ad", cards:[
+    { kanji:"薦", read:"すすめる・セン", meaning:"推薦", ex:"友人を委員に（　）める。", choices:["薦","慕","募","菜"] },
+    { kanji:"簿", read:"ボ", meaning:"名簿・帳簿", ex:"クラスの名（　）を作る。", choices:["簿","薄","縛","博"] },
+    { kanji:"欄", read:"ラン", meaning:"欄外・空欄", ex:"アンケートの空（　）に記入する。", choices:["欄","蘭","覧","乱"] },
+    { kanji:"誓", read:"ちかう・セイ", meaning:"誓う・宣誓", ex:"優勝を（　）って練習した。", choices:["誓","折","警","制"] },
+    { kanji:"稿", read:"コウ", meaning:"原稿・投稿", ex:"小説の原（　）を書き上げた。", choices:["稿","構","講","港"] },
+    { kanji:"棋", read:"キ", meaning:"将棋・棋士", ex:"（　）士になるために猛特訓した。", choices:["棋","期","旗","棋"] },
+    { kanji:"箇", read:"カ・コ", meaning:"箇所・箇条", ex:"三（　）所のミスを見つけた。", choices:["箇","個","固","故"] },
+    { kanji:"啓", read:"ケイ", meaning:"啓示・拝啓", ex:"手紙の書き出しに「拝（　）」と書く。", choices:["啓","系","茎","刑"] },
+    { kanji:"携", read:"たずさえる・ケイ", meaning:"携帯・携わる", ex:"仕事に（　）わる。", choices:["携","軽","傾","頃"] },
+    { kanji:"阻", read:"はばむ・ソ", meaning:"阻止・阻害", ex:"相手の攻撃を（　）止した。", choices:["阻","租","粗","組"] },
+    { kanji:"浸", read:"ひたす・シン", meaning:"浸水・浸る", ex:"川の水が田畑に（　）水した。", choices:["浸","侵","寝","深"] },
+    { kanji:"紳", read:"シン", meaning:"紳士", ex:"（　）士的な振る舞いを心がける。", choices:["紳","伸","申","神"] },
+    { kanji:"峰", read:"みね・ホウ", meaning:"山峰・最高峰", ex:"富士山の（　）から日の出を見た。", choices:["峰","蜂","縫","逢"] },
+    { kanji:"奉", read:"たてまつる・ホウ", meaning:"奉仕・奉行", ex:"地域のために（　）仕活動をした。", choices:["奉","泰","春","棒"] },
+    { kanji:"冠", read:"かんむり・カン", meaning:"王冠・冠者", ex:"王様が金の（　）をかぶった。", choices:["冠","官","寛","貫"] },
+    { kanji:"喚", read:"さけぶ・カン", meaning:"喚問・喚く", ex:"証人を国会に（　）問した。", choices:["喚","換","歓","缶"] },
+    { kanji:"租", read:"ソ", meaning:"租税・地租", ex:"（　）税を納めることは義務だ。", choices:["租","阻","粗","組"] },
+  ]},
+  { id:"kanji3", label:"漢字③（枕草子）", icon:"🌸", color:"#e67e22", cards:[
+    { kanji:"紫", read:"むらさき・シ", meaning:"紫色・紫雲", ex:"空が美しい（　）色に染まった。", choices:["紫","紺","緑","縁"] },
+    { kanji:"蛍", read:"ほたる・ケイ", meaning:"蛍火・蛍光", ex:"夏の夜、（　）が光りながら飛んだ。", choices:["蛍","営","労","蛍"] },
+    { kanji:"趣", read:"おもむき・シュ", meaning:"趣味・趣向", ex:"この庭には風情と（　）がある。", choices:["趣","取","最","超"] },
+    { kanji:"寝", read:"ねる・シン", meaning:"就寝・寝室", ex:"早く（　）室に戻って休んだ。", choices:["寝","寄","寒","察"] },
+    { kanji:"霜", read:"しも・ソウ", meaning:"霜柱・初霜", ex:"冬の朝、（　）柱が立っていた。", choices:["霜","雪","霧","露"] },
+    { kanji:"傾", read:"かたむく・ケイ", meaning:"傾向・傾く", ex:"建物が地震で（　）いた。", choices:["傾","頃","項","領"] },
+    { kanji:"晶", read:"ショウ", meaning:"水晶・結晶", ex:"洞窟の中に美しい結（　）があった。", choices:["晶","品","昆","昌"] },
+  ]},
+];
+
 // ── メインアプリ ────────────────────────────────
 function App() {
   const [subject, setSubject] = useState(null);   // null | "social" | "science"
@@ -277,8 +332,10 @@ function App() {
   const [inputVal, setInputVal] = useState("");
   const [spelResult, setSpelResult] = useState(null); // null | "correct" | "wrong"
   const [showAnswer, setShowAnswer] = useState(false);
+  const [kanjiResult, setKanjiResult] = useState(null); // null | "correct" | "wrong"
+  const [kanjiMode, setKanjiMode] = useState("fill"); // "fill"=穴埋め or "read"=読み
 
-  const currentUnits = subject === "science" ? SCIENCE_UNITS : subject === "english" ? ENGLISH_UNITS : SOCIAL_UNITS;
+  const currentUnits = subject === "science" ? SCIENCE_UNITS : subject === "english" ? ENGLISH_UNITS : subject === "japanese" ? JAPANESE_UNITS : SOCIAL_UNITS;
 
   const spawnParticles = ok => {
     setParticles(Array.from({length:8},(_,i)=>({
@@ -293,7 +350,7 @@ function App() {
 
   const buildChoices = (cards, currentIdx, subj) => {
     const card = cards[currentIdx];
-    // 元素記号は固定選択肢を使う
+    // 元素記号・漢字は固定選択肢を使う
     if (card.choices) {
       return shuffle(card.choices.map(ch => ({ word:ch, isSymbol:true })));
     }
@@ -306,18 +363,20 @@ function App() {
   };
 
   const startStudy = (u, m) => {
-    const shuffled = shuffle(u.cards);
+    const shuffled = shuffle(u.cards).map(card =>
+      card.choices ? {...card, _shuffledChoices: shuffle([...card.choices])} : card
+    );
     setUnit(u); setMode(m); setDeck(shuffled); setIdx(0);
     setFlipped(false); setSelected(null); setScore({ok:0,ng:0});
     if (m==="quiz") setQuizChoices(buildChoices(shuffled, 0, subject));
-    setInputVal(""); setSpelResult(null); setShowAnswer(false);
+    setInputVal(""); setSpelResult(null); setShowAnswer(false); setKanjiResult(null);
     setScreen("study");
   };
 
   const goNext = () => {
     const next = idx+1;
     if (next >= deck.length) { setScreen("result"); return; }
-    setIdx(next); setFlipped(false); setSelected(null); setInputVal(""); setSpelResult(null); setShowAnswer(false);
+    setIdx(next); setFlipped(false); setSelected(null); setInputVal(""); setSpelResult(null); setShowAnswer(false); setKanjiResult(null);
     if (mode==="quiz") setQuizChoices(buildChoices(deck, next, subject));
   };
 
@@ -375,6 +434,7 @@ function App() {
                 {key:"social",icon:"🌐",label:"社会（歴史）",sub:"江戸〜幕末 · 全13単元 · 105語句",color:"#c0392b"},
                 {key:"science",icon:"🔬",label:"理科（化学）",sub:"物質・化学変化・元素記号 · 全3単元 · 39語句",color:"#27ae60"},
                 {key:"english",icon:"🇬🇧",label:"英語（Unit 0・1）",sub:"スペル入力で覚える · 全2単元 · 38語句",color:"#2471a3"},
+                {key:"japanese",icon:"📖",label:"国語（漢字）",sub:"例文穴埋め4択 · 全3単元 · 44字",color:"#c0392b"},
               ].map(s=>(
                 <div key={s.key} className="ch" onClick={()=>{setSubject(s.key);setScreen("units");}}
                   style={{background:"linear-gradient(135deg,rgba(16,16,32,0.95),rgba(22,22,44,0.9))",border:`1px solid ${s.color}44`,borderLeft:`4px solid ${s.color}`,borderRadius:14,padding:"20px 20px",display:"flex",alignItems:"center",gap:16}}>
@@ -398,8 +458,8 @@ function App() {
           <div style={{animation:"fadeIn 0.4s ease"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
               <button className="fb" onClick={()=>setScreen("home")} style={{background:"rgba(100,120,255,0.1)",border:"1px solid #334",borderRadius:8,color:"#778",padding:"4px 11px",fontSize:"0.74rem"}}>← 教科選択</button>
-              <span style={{fontWeight:700,color:subject==="science"?"#27ae60":subject==="english"?"#2471a3":"#c0392b",fontSize:"0.9rem"}}>
-                {subject==="science"?"🔬 理科（化学）":subject==="english"?"🇬🇧 英語（Unit 0・1）":"🌐 社会（歴史）"}
+              <span style={{fontWeight:700,color:subject==="science"?"#27ae60":subject==="english"?"#2471a3":subject==="japanese"?"#8e44ad":"#c0392b",fontSize:"0.9rem"}}>
+                {subject==="science"?"🔬 理科（化学）":subject==="english"?"🇬🇧 英語（Unit 0・1）":subject==="japanese"?"📖 国語（漢字）":"🌐 社会（歴史）"}
               </span>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:9}}>
@@ -415,6 +475,8 @@ function App() {
                   <div style={{display:"flex",gap:8}}>
                     {subject==="english" ? (
                       <button className="fb" onClick={()=>startStudy(u,"spell")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}33`,border:`1px solid ${u.color}66`,color:"#dde",fontSize:"0.8rem",fontWeight:600}}>✏️ スペル入力</button>
+                    ) : subject==="japanese" ? (
+                      <button className="fb" onClick={()=>startStudy(u,"kanji")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}33`,border:`1px solid ${u.color}66`,color:"#dde",fontSize:"0.8rem",fontWeight:600}}>📝 漢字クイズ</button>
                     ) : (
                       <>
                         <button className="fb" onClick={()=>startStudy(u,"flashcard")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}22`,border:`1px solid ${u.color}44`,color:"#ccd",fontSize:"0.8rem",fontWeight:600}}>📖 フラッシュカード</button>
@@ -429,7 +491,7 @@ function App() {
         )}
 
         {/* ── STUDY ── */}
-        {screen==="study" && subject!=="english" && idx < deck.length && (
+        {screen==="study" && subject!=="english" && subject!=="japanese" && idx < deck.length && (
           <div style={{animation:"fadeIn 0.35s ease"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
               <span style={{fontSize:"0.95rem"}}>{unit.icon}</span>
@@ -507,6 +569,75 @@ function App() {
                     </button>
                   </div>
                 )}
+              </div>
+            )}
+          </div>
+        )}
+
+
+        {/* ── 国語 漢字クイズ ── */}
+        {screen==="study" && subject==="japanese" && idx < deck.length && (
+          <div style={{animation:"fadeIn 0.35s ease"}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
+              <span style={{fontSize:"0.95rem"}}>{unit.icon}</span>
+              <span style={{fontSize:"0.77rem",color:unitColor,fontWeight:600}}>{unit.label}</span>
+              <span style={{fontSize:"0.72rem",color:"#556",marginLeft:4}}>📝 漢字クイズ</span>
+              <button className="fb" onClick={()=>setScreen("units")} style={{marginLeft:"auto",background:"rgba(100,120,255,0.1)",border:"1px solid #334",borderRadius:8,color:"#778",padding:"4px 10px",fontSize:"0.73rem"}}>← 単元選択</button>
+            </div>
+            <div style={{height:4,background:"#1a1a35",borderRadius:4,marginBottom:14,overflow:"hidden"}}>
+              <div style={{height:"100%",width:`${(idx/totalCards)*100}%`,background:`linear-gradient(90deg,${unitColor},${unitColor}88)`,transition:"width 0.4s",borderRadius:4}} />
+            </div>
+
+            {/* 問題カード */}
+            <div style={{background:`linear-gradient(135deg,${unitColor}18,${unitColor}08)`,border:`1px solid ${unitColor}44`,borderRadius:18,padding:"24px 22px",marginBottom:16}}>
+              <div style={{fontSize:"0.68rem",color:"#556",marginBottom:10}}>（　）に入る漢字を選べ</div>
+              <div style={{fontSize:"1.3rem",fontWeight:700,color:"#f0f0ff",lineHeight:1.9,textAlign:"center"}}>
+                {deck[idx].ex}
+              </div>
+              {kanjiResult !== null && (
+                <div style={{marginTop:12,fontSize:"0.8rem",color:"#778",textAlign:"center"}}>
+                  読み: <span style={{color:"#aab"}}>{deck[idx].read}</span>　意味: <span style={{color:"#aab"}}>{deck[idx].meaning}</span>
+                </div>
+              )}
+            </div>
+
+            {/* 4択 */}
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:14}}>
+              {(deck[idx]._shuffledChoices || deck[idx].choices).map((ch,i)=>{
+                const answered = kanjiResult !== null;
+                const isRight = ch === deck[idx].kanji;
+                const isSel = answered && ch === (kanjiResult==="correct" ? deck[idx].kanji : deck[idx]._selected);
+                let bg="rgba(18,20,44,0.85)", border="1px solid #252545", color="#ccd";
+                if (answered) {
+                  if (isRight) { bg="rgba(39,174,96,0.18)"; border="1px solid #27ae6077"; color="#7ef0a8"; }
+                  else if (isSel) { bg="rgba(192,57,43,0.18)"; border="1px solid #c0392b77"; color="#f08080"; }
+                }
+                return (
+                  <div key={i} className={answered?"":"cb"} onClick={()=>{
+                    if(answered) return;
+                    const ok = ch === deck[idx].kanji;
+                    deck[idx]._selected = ch;
+                    setKanjiResult(ok?"correct":"wrong");
+                    spawnParticles(ok);
+                    setScore(s=>({ok:s.ok+(ok?1:0),ng:s.ng+(ok?0:1)}));
+                  }}
+                    style={{background:bg,border,borderRadius:12,padding:"16px 0",color,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"2rem",fontWeight:900,opacity:answered&&!isRight&&!isSel?0.35:1}}>
+                    {ch}
+                  </div>
+                );
+              })}
+            </div>
+
+            {kanjiResult !== null && (
+              <div>
+                <div style={{background:kanjiResult==="correct"?"rgba(39,174,96,0.12)":"rgba(192,57,43,0.12)",border:`1px solid ${kanjiResult==="correct"?"#27ae60":"#c0392b"}55`,borderRadius:12,padding:"12px 15px",marginBottom:12,animation:"fadeIn 0.25s ease"}}>
+                  <div style={{fontWeight:700,fontSize:"1.03rem",color:kanjiResult==="correct"?"#7ef0a8":"#f08080"}}>
+                    {kanjiResult==="correct"?"🎉 正解！":"😅 不正解… 正解は「"+deck[idx].kanji+"」（"+deck[idx].read+"）"}
+                  </div>
+                </div>
+                <button className="fb" onClick={goNext} style={{width:"100%",padding:"13px",borderRadius:12,background:`linear-gradient(135deg,${unitColor},${unitColor}bb)`,border:"none",color:"#fff",fontWeight:700,fontSize:"0.95rem",animation:"pulse 2s infinite"}}>
+                  {idx+1>=totalCards?"結果を見る 🏆":"次へ →"}
+                </button>
               </div>
             )}
           </div>
