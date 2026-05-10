@@ -214,6 +214,52 @@ const shuffle = arr => {
   return a;
 };
 
+
+// ── 英語データ ──────────────────────────────────
+const ENGLISH_UNITS = [
+  { id:"unit0", label:"Unit 0", icon:"📝", color:"#2471a3", cards:[
+    { word:"same", meaning:"同じ、同一の" },
+    { word:"experience", meaning:"経験、体験" },
+    { word:"actually", meaning:"実は、本当は" },
+    { word:"ramen", meaning:"ラーメン" },
+    { word:"instant", meaning:"即座の、緊急の、（食べ物が）即席の" },
+    { word:"noodle", meaning:"ヌードル、めん" },
+    { word:"by the way", meaning:"ところで" },
+  ]},
+  { id:"unit1", label:"Unit 1", icon:"✈️", color:"#1e8449", cards:[
+    { word:"golden", meaning:"金色の、すばらしい" },
+    { word:"holiday", meaning:"休日、休暇" },
+    { word:"Singapore", meaning:"シンガポール" },
+    { word:"flight", meaning:"飛ぶこと、飛行、空の旅" },
+    { word:"arrive", meaning:"到着する" },
+    { word:"airport", meaning:"空港、飛行場" },
+    { word:"soon", meaning:"すぐに、まもなく" },
+    { word:"See you.", meaning:"またね。" },
+    { word:"will", meaning:"〔確かな未来〕〜でしょう、〜だろう　〔意志〕〜するつもりだ" },
+    { word:"excited", meaning:"わくわくした" },
+    { word:"seafood", meaning:"シーフード" },
+    { word:"reservation", meaning:"予約" },
+    { word:"meter", meaning:"メートル" },
+    { word:"tall", meaning:"〔身長・高さを表す名詞のあとに用いて〕身長〔高さ〕が〜ある" },
+    { word:"weigh", meaning:"〜の重さがある" },
+    { word:"ton", meaning:"トン" },
+    { word:"find", meaning:"〜を見つける、発見する" },
+    { word:"found", meaning:"findの過去形" },
+    { word:"language", meaning:"言語、言葉" },
+    { word:"dollar", meaning:"ドル" },
+    { word:"example", meaning:"例、実例" },
+    { word:"communicate", meaning:"連絡する、意思の疎通をする" },
+    { word:"for example", meaning:"例えば" },
+    { word:"painting", meaning:"（絵の具でかいた）絵、絵画" },
+    { word:"wall", meaning:"かべ" },
+    { word:"surprised", meaning:"驚いた、びっくりした" },
+    { word:"area", meaning:"区域、場所、地域" },
+    { word:"India", meaning:"インド" },
+    { word:"mosque", meaning:"モスク、イスラム教寺院" },
+    { word:"culture", meaning:"文化" },
+  ]},
+];
+
 // ── メインアプリ ────────────────────────────────
 function App() {
   const [subject, setSubject] = useState(null);   // null | "social" | "science"
@@ -228,8 +274,11 @@ function App() {
   const [score, setScore] = useState({ ok:0, ng:0 });
   const [particles, setParticles] = useState([]);
   const timerRef = useRef(null);
+  const [inputVal, setInputVal] = useState("");
+  const [spelResult, setSpelResult] = useState(null); // null | "correct" | "wrong"
+  const [showAnswer, setShowAnswer] = useState(false);
 
-  const currentUnits = subject === "science" ? SCIENCE_UNITS : SOCIAL_UNITS;
+  const currentUnits = subject === "science" ? SCIENCE_UNITS : subject === "english" ? ENGLISH_UNITS : SOCIAL_UNITS;
 
   const spawnParticles = ok => {
     setParticles(Array.from({length:8},(_,i)=>({
@@ -261,13 +310,14 @@ function App() {
     setUnit(u); setMode(m); setDeck(shuffled); setIdx(0);
     setFlipped(false); setSelected(null); setScore({ok:0,ng:0});
     if (m==="quiz") setQuizChoices(buildChoices(shuffled, 0, subject));
+    setInputVal(""); setSpelResult(null); setShowAnswer(false);
     setScreen("study");
   };
 
   const goNext = () => {
     const next = idx+1;
     if (next >= deck.length) { setScreen("result"); return; }
-    setIdx(next); setFlipped(false); setSelected(null);
+    setIdx(next); setFlipped(false); setSelected(null); setInputVal(""); setSpelResult(null); setShowAnswer(false);
     if (mode==="quiz") setQuizChoices(buildChoices(deck, next, subject));
   };
 
@@ -324,6 +374,7 @@ function App() {
               {[
                 {key:"social",icon:"🌐",label:"社会（歴史）",sub:"江戸〜幕末 · 全13単元 · 105語句",color:"#c0392b"},
                 {key:"science",icon:"🔬",label:"理科（化学）",sub:"物質・化学変化・元素記号 · 全3単元 · 39語句",color:"#27ae60"},
+                {key:"english",icon:"🇬🇧",label:"英語（Unit 0・1）",sub:"スペル入力で覚える · 全2単元 · 38語句",color:"#2471a3"},
               ].map(s=>(
                 <div key={s.key} className="ch" onClick={()=>{setSubject(s.key);setScreen("units");}}
                   style={{background:"linear-gradient(135deg,rgba(16,16,32,0.95),rgba(22,22,44,0.9))",border:`1px solid ${s.color}44`,borderLeft:`4px solid ${s.color}`,borderRadius:14,padding:"20px 20px",display:"flex",alignItems:"center",gap:16}}>
@@ -347,8 +398,8 @@ function App() {
           <div style={{animation:"fadeIn 0.4s ease"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
               <button className="fb" onClick={()=>setScreen("home")} style={{background:"rgba(100,120,255,0.1)",border:"1px solid #334",borderRadius:8,color:"#778",padding:"4px 11px",fontSize:"0.74rem"}}>← 教科選択</button>
-              <span style={{fontWeight:700,color:subject==="science"?"#27ae60":"#c0392b",fontSize:"0.9rem"}}>
-                {subject==="science"?"🔬 理科（化学）":"🌐 社会（歴史）"}
+              <span style={{fontWeight:700,color:subject==="science"?"#27ae60":subject==="english"?"#2471a3":"#c0392b",fontSize:"0.9rem"}}>
+                {subject==="science"?"🔬 理科（化学）":subject==="english"?"🇬🇧 英語（Unit 0・1）":"🌐 社会（歴史）"}
               </span>
             </div>
             <div style={{display:"flex",flexDirection:"column",gap:9}}>
@@ -362,8 +413,14 @@ function App() {
                     </div>
                   </div>
                   <div style={{display:"flex",gap:8}}>
-                    <button className="fb" onClick={()=>startStudy(u,"flashcard")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}22`,border:`1px solid ${u.color}44`,color:"#ccd",fontSize:"0.8rem",fontWeight:600}}>📖 フラッシュカード</button>
-                    <button className="fb" onClick={()=>startStudy(u,"quiz")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}33`,border:`1px solid ${u.color}66`,color:"#dde",fontSize:"0.8rem",fontWeight:600}}>🧠 クイズ</button>
+                    {subject==="english" ? (
+                      <button className="fb" onClick={()=>startStudy(u,"spell")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}33`,border:`1px solid ${u.color}66`,color:"#dde",fontSize:"0.8rem",fontWeight:600}}>✏️ スペル入力</button>
+                    ) : (
+                      <>
+                        <button className="fb" onClick={()=>startStudy(u,"flashcard")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}22`,border:`1px solid ${u.color}44`,color:"#ccd",fontSize:"0.8rem",fontWeight:600}}>📖 フラッシュカード</button>
+                        <button className="fb" onClick={()=>startStudy(u,"quiz")} style={{flex:1,padding:"8px 0",borderRadius:9,background:`${u.color}33`,border:`1px solid ${u.color}66`,color:"#dde",fontSize:"0.8rem",fontWeight:600}}>🧠 クイズ</button>
+                      </>
+                    )}
                   </div>
                 </div>
               ))}
@@ -372,7 +429,7 @@ function App() {
         )}
 
         {/* ── STUDY ── */}
-        {screen==="study" && idx < deck.length && (
+        {screen==="study" && subject!=="english" && idx < deck.length && (
           <div style={{animation:"fadeIn 0.35s ease"}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
               <span style={{fontSize:"0.95rem"}}>{unit.icon}</span>
@@ -450,6 +507,78 @@ function App() {
                     </button>
                   </div>
                 )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── ENGLISH スペル入力 ── */}
+        {screen==="study" && subject==="english" && idx < deck.length && (
+          <div style={{animation:"fadeIn 0.35s ease"}}>
+            <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
+              <span style={{fontSize:"0.95rem"}}>{unit.icon}</span>
+              <span style={{fontSize:"0.77rem",color:unitColor,fontWeight:600}}>{unit.label}</span>
+              <span style={{fontSize:"0.72rem",color:"#556",marginLeft:4}}>✏️ スペル入力</span>
+              <button className="fb" onClick={()=>setScreen("units")} style={{marginLeft:"auto",background:"rgba(100,120,255,0.1)",border:"1px solid #334",borderRadius:8,color:"#778",padding:"4px 10px",fontSize:"0.73rem"}}>← 単元選択</button>
+            </div>
+            <div style={{height:4,background:"#1a1a35",borderRadius:4,marginBottom:14,overflow:"hidden"}}>
+              <div style={{height:"100%",width:`${(idx/totalCards)*100}%`,background:`linear-gradient(90deg,${unitColor},${unitColor}88)`,transition:"width 0.4s",borderRadius:4}} />
+            </div>
+            {/* 意味カード */}
+            <div style={{background:`linear-gradient(135deg,${unitColor}18,${unitColor}08)`,border:`1px solid ${unitColor}44`,borderRadius:18,padding:"24px 22px",textAlign:"center",marginBottom:16,minHeight:90,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",gap:8}}>
+              <div style={{fontSize:"0.72rem",color:"#556"}}>次の意味の英単語は？</div>
+              <div style={{fontSize:"1.5rem",fontWeight:900,color:"#f0f0ff"}}>{deck[idx].meaning}</div>
+            </div>
+            {/* 入力欄 */}
+            <input
+              type="text"
+              value={inputVal}
+              onChange={e=>setInputVal(e.target.value)}
+              onKeyDown={e=>{
+                if(e.key==="Enter" && spelResult===null && inputVal.trim()!==""){
+                  const ok = inputVal.trim().toLowerCase() === deck[idx].word.toLowerCase();
+                  setSpelResult(ok?"correct":"wrong");
+                  spawnParticles(ok);
+                  setScore(s=>({ok:s.ok+(ok?1:0),ng:s.ng+(ok?0:1)}));
+                }
+              }}
+              disabled={spelResult!==null}
+              placeholder="英単語を入力してEnter..."
+              style={{width:"100%",padding:"14px 16px",borderRadius:12,background:"rgba(20,22,48,0.9)",border:`2px solid ${spelResult===null?"rgba(100,120,255,0.3)":spelResult==="correct"?"#27ae60":"#c0392b"}`,color:"#e8e8f0",fontSize:"1.1rem",outline:"none",marginBottom:12,textAlign:"center",letterSpacing:"0.05em"}}
+            />
+            {spelResult===null && inputVal.trim()!=="" && (
+              <button className="fb" onClick={()=>{
+                const ok = inputVal.trim().toLowerCase() === deck[idx].word.toLowerCase();
+                setSpelResult(ok?"correct":"wrong");
+                spawnParticles(ok);
+                setScore(s=>({ok:s.ok+(ok?1:0),ng:s.ng+(ok?0:1)}));
+              }} style={{width:"100%",padding:"12px",borderRadius:12,background:`linear-gradient(135deg,${unitColor},${unitColor}bb)`,border:"none",color:"#fff",fontWeight:700,fontSize:"0.95rem",marginBottom:12}}>
+                確認する ✅
+              </button>
+            )}
+            {spelResult===null && !showAnswer && (
+              <button className="fb" onClick={()=>setShowAnswer(true)} style={{width:"100%",padding:"10px",borderRadius:12,background:"rgba(100,120,255,0.08)",border:"1px dashed rgba(100,120,255,0.25)",color:"#667",fontSize:"0.8rem"}}>
+                答えを見る 👁️
+              </button>
+            )}
+            {showAnswer && spelResult===null && (
+              <div style={{textAlign:"center",padding:"10px",background:"rgba(100,120,255,0.1)",border:"1px solid rgba(100,120,255,0.2)",borderRadius:12,marginBottom:12}}>
+                <span style={{fontSize:"1.3rem",fontWeight:900,color:"#8fa8ff",letterSpacing:"0.08em"}}>{deck[idx].word}</span>
+              </div>
+            )}
+            {spelResult!==null && (
+              <div>
+                <div style={{background:spelResult==="correct"?"rgba(39,174,96,0.12)":"rgba(192,57,43,0.12)",border:`1px solid ${spelResult==="correct"?"#27ae60":"#c0392b"}55`,borderRadius:12,padding:"14px 16px",marginBottom:12,animation:"fadeIn 0.25s ease"}}>
+                  <div style={{fontWeight:700,fontSize:"1.05rem",marginBottom:6,color:spelResult==="correct"?"#7ef0a8":"#f08080"}}>
+                    {spelResult==="correct"?"🎉 正解！":"😅 不正解…"}
+                  </div>
+                  <div style={{fontSize:"0.9rem",color:"#aab"}}>
+                    正解: <span style={{fontSize:"1.1rem",fontWeight:900,color:"#8fa8ff",letterSpacing:"0.06em"}}>{deck[idx].word}</span>
+                  </div>
+                </div>
+                <button className="fb" onClick={goNext} style={{width:"100%",padding:"13px",borderRadius:12,background:`linear-gradient(135deg,${unitColor},${unitColor}bb)`,border:"none",color:"#fff",fontWeight:700,fontSize:"0.95rem",animation:"pulse 2s infinite"}}>
+                  {idx+1>=totalCards?"結果を見る 🏆":"次へ →"}
+                </button>
               </div>
             )}
           </div>
